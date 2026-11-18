@@ -1,0 +1,25 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "get-weather-agent"
+version = "0.1.0"
+description = "A LangGraph agent that answers weather questions using OpenAI and Open-Meteo"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "httpx>=0.27,<1",
+  "langchain-openai>=0.2,<1",
+  "langgraph>=0.2,<1",
+  "python-dotenv>=1,<2",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8,<9"]
+
+[project.scripts]
+get-weather = "get_weather.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/get_weather"]
